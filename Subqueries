@@ -1,0 +1,20 @@
+select count(*) numemp,min(sal) from emp;
+desc sailors
+desc reserves
+desc boats
+select s.sname,s.sid from sailors s where s.sid= any(select r.sid from reserves r where r.bid=103);
+
+select s.sname from sailors s where s.sid = any (select r.sid from reserves r where r.bid =any(select b.bid from boats b where b.color='red'));
+
+select distinct b.color from boats b where b.bid= any(select r.bid from reserves r where r.sid=any(select s.sid from sailors s where s.sname='Lubber'));
+
+select distinct b.color from boats b where b.bid= any(select r.bid from reserves r where r.sid in (select s.sid from sailors s where s.sname='Lubber'));
+
+select s.sname from Sailors s where s.sid = all(select r.sid from reserves r where r.bid= all(select b.bid from boats b where b.color='red' or b.color='green'));
+
+
+--select s.sname,s.sid from Sailors s  group by s.age having s.age>20 order by s.sname;
+--select s.sname ,s.sid from sailors s where s.rating>5 group by s.sid;
+desc emp
+--select e.empno,e.ename,e.job,e.sal,e.deptno from emp e group by e.deptno;
+select empno,ename,sal from emp group by deptno;
