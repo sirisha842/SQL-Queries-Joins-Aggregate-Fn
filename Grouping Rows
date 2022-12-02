@@ -1,0 +1,32 @@
+GROUP BY:
+create view calculations as select deptno, min(esal) as "MIN SAL", max(esal) as "MAX SAL", avg(esal) as "AVG SAL" from emp group by deptno;
+
+ORDER BY:
+SELECT rollno,sname, CONCAT('19K61A0',rollno) regid FROM student order by rollno;
+
+For fetching first row from the table::
+---------------------------------------
+select eno, ename, esal, edept from emp3 order by esal desc fetch first row only;
+create view emp_view as  select deptno,max(sal)"max sal",min(sal) "Min sal" from emp group by deptno;
+create view em_view as  select deptno,sal  from emp ;
+insert into em_view values(10,2000);
+create view empp as select empno,ename,sal,deptno from emp;
+select * from emp_view;
+select * from empp;
+drop view emp_view;
+select * from emp;
+
+insert into empp values(1234,'abcd',1300,20);
+--NON-UPDATABLE VIEW
+desc dept1
+create view emp_dept as select e.empno,e.ename,e.sal,d.deptno from emp e,dept1 d where e.deptno=d.deptno;
+select *from dept;
+select e.empno,e.ename,e.sal,d.deptno,d.loc from emp e,dept d where e.deptno=d.deptno;
+select * from emp_dept;
+drop view emp_dept;
+
+insert into emp_dept values(2345,'money',2300,20);
+
+select * from emp where deptno=10;
+
+create view v1 as select * from emp where deptno=10;
